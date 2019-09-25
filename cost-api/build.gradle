@@ -1,0 +1,32 @@
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+
+            groupId 'com.pxq.cost'
+            artifactId 'cost-api'
+            version '1.0.0'
+
+            from components.java
+
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            // 这里用本地目录
+            url uri('../repos')
+        }
+    }
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

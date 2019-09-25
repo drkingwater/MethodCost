@@ -1,0 +1,39 @@
+apply plugin: 'groovy'
+apply plugin: 'maven-publish'
+
+dependencies {
+    //gradle sdk
+    implementation gradleApi()
+    //groovy sdk
+    implementation localGroovy()
+    //transform api 这里的版本要跟工程的版本一致或者更低即（ classpath 'com.android.tools.build:gradle:3.5.0'）
+    implementation 'com.android.tools.build:gradle:3.5.0'
+    //处理io操作
+    implementation 'commons-io:commons-io:2.5'
+    implementation 'javassist:javassist:3.12.1.GA'
+//    implementation project(':cost-api')
+    implementation 'com.pxq.cost:cost-api:1.0.0'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+
+            groupId 'com.pxq.cost'
+            artifactId 'cost-plugin'
+            version '1.0.2'
+
+            from components.java
+
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            // 这里用本地目录
+            url uri('../repos')
+        }
+    }
+}
