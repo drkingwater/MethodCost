@@ -55,7 +55,7 @@ implementation 'com.pxq.cost:cost-api:1.0.0'
         return new JavaBean("testCostReturn", 1);
     }
 ```
-## build.gradle中控制
+## build.gradle中控制是否使用
 ```
 apply plugin: 'com.android.application'
 apply plugin: 'com.pxq.cost'
